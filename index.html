@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Covid-19 Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="animateSelect">
+        <h1 id="gname"></h1>
+        <h3 id="gcase"></h3>
+        <h3 id="gdeath"></h3>
+        <h3 id="grecover"></h3>
+    </div>
+
+    <select id="summary" onchange="onSelect()"></select>
+    <br><br>
+    <div id = "chart">
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+
+</html>
