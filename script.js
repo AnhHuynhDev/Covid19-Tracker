@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 var lists = [];
 var chart = null;
 function tracker() { 
@@ -25,6 +33,8 @@ function tracker() {
         document.getElementById("gcase").innerHTML = "Total cases: " + data.Global.TotalConfirmed
         document.getElementById("gdeath").innerHTML = "Total death: " + data.Global.TotalDeaths
         document.getElementById("grecover").innerHTML = "Total recovered: " + data.Global.TotalRecovered
+    
+    
     })
     countryChart()
 }
@@ -35,12 +45,50 @@ function animateSelect() {
     animate.innerHTML = content;    
 }
 
-function countryChart(code) {
 
-    fetch('https://covid19-api.org/api/timeline/' + (code || ''))
+
+function countryChart(code) {
+    
+      
+    //fetch('https://covid19-api.org/api/timeline/' + (code || ''), {
+    
+            var data = timeLine
+            var cases = []
+            var death = []
+            var recovered = []
+    
+            for(i = data.length-1; i >= 0; i--) {
+                cases.push({
+                    x: new Date(data[i].last_update),
+                    y: data[i].cases || data[i].total_cases
+                })  
+    
+                death.push({
+                    x: new Date(data[i].last_update),
+                    y: data[i].deaths || data[i].total_deaths
+                }) 
+    
+                recovered.push({
+                    x: new Date(data[i].last_update),
+                    y: data[i].recovered || data[i].total_recovered
+                }) 
+            }
+    
+            if (chart == null) {
+                refreshChart(cases, death,recovered)
+            } else {
+                chart.data.datasets[0].data = cases;
+                chart.data.datasets[1].data = death;
+                chart.data.datasets[2].data = recovered;
+                chart.update();
+            }
+        
+
+    return 
+    fetch('https://covid19-api.org/api/timeline/')
     .then(response => response.json())
     .then(data => {
-
+        data = timeLine
         var cases = []
         var death = []
         var recovered = []
