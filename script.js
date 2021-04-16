@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 var lists = [];
 var chart = null;
 function tracker() { 
